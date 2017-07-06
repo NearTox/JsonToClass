@@ -1,0 +1,74 @@
+{
+  "Test": {
+    "param": {
+      "yeah": true
+    },
+    "args": 201,
+    "file": "File",
+    "url": "Url",
+    "time": "Double",
+    "string": "String",
+    "wstring": "WString",
+    "myArray": []
+  },
+  // can be nested
+  "--config": {
+    "name-format": [
+      null, // simple [-] -> _
+      "CamelCase" // [^/w] -> Camel case
+    ],
+    // add someting at the start
+    "prefix": [
+      null, // ""
+      "String" // "m_"
+    ],
+    "postfix": [
+      null, // ""
+      "String" // "_native"
+    ],
+    // add someting at the start
+    "class-prefix": [
+      null, // ""
+      "String" // "m_"
+    ],
+    "class-postfix": [
+      null, // "_json"
+      "String"
+    ],
+    "public": [
+      null, // all
+      "Array"
+    ],
+    "private": [
+      null, // none
+      "Array"
+    ],
+    "protected": [
+      null, // none
+      "Array"
+    ],
+    "seter": [
+      true, // all
+      false, // null
+      "Array"
+    ],
+    "geter": [
+      true, // all
+      false, // null
+      "Array"
+    ],
+    // Default Navite Type for Number
+    "Number": [
+      null, // auto
+      "Double"
+    ],
+    "Array": [
+      null, // Vector
+      "Deque"
+    ],
+    "String": [
+      null, // String
+      "WString"
+    ]
+  }
+}
