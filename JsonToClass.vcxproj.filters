@@ -27,5 +27,6 @@
     <ClInclude Include="Core\JsonToClass.hpp">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="m_Test_native.hpp" />
   </ItemGroup>
 </Project>

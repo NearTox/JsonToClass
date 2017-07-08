@@ -97,6 +97,7 @@
       <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ExceptionHandling>Async</ExceptionHandling>
+      <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(MyLibDir)</AdditionalLibraryDirectories>
@@ -111,6 +112,7 @@
       <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ExceptionHandling>Async</ExceptionHandling>
+      <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(MyLibDir)</AdditionalLibraryDirectories>
@@ -161,6 +163,7 @@
     <ClInclude Include="Core\JsonToClass.hpp" />
     <ClInclude Include="Core\TypeMetaInfo.hpp" />
     <ClInclude Include="Core\Utils.hpp" />
+    <ClInclude Include="m_Test_native.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

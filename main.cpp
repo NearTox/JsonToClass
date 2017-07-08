@@ -12,7 +12,7 @@
 #include <iostream>
 
 namespace NearTox {
-  
+
   void worker(const PathDir &dir) {
     BasicJSON MainJson;
     {
@@ -55,7 +55,7 @@ int main() {
   if(argc > 1) {
     return 0;
   }
-  //NearTox::worker(NearTox::makePath(L"T:\\NT.Sync\\JsonToClass\\result.json"));
+  //NearTox::worker(NearTox::makePath(L"T:\\NT.Sync\\JsonToClass\\result.json")); 
   std::cout << "JsonToClass.exe [] [--] [<pathspec>...]\n\n"
     "\t<pathspec>...\t\tArchivos a ser procesados\n\n";
   system("pause");

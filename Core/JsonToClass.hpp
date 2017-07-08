@@ -15,7 +15,6 @@ namespace NearTox {
   private:
     typedef std::vector<JsonToClass> Child_info;
     std::shared_ptr<Child_info> Childs;
-    TypeMetaInfo meta;
   public:
     std::string name;
     Config_Helper Config;

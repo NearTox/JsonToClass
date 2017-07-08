@@ -7,10 +7,15 @@
 #include "Utils.hpp"
 #include <NearTox/Base.hpp>
 
+#include <stdexcept>
+
 namespace NearTox {
 
   static std::string Dic("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_");
   void FormatFile(std::string *toRemove) {
+    if(toRemove == nullptr) {
+      throw std::invalid_argument("toRemove is null");
+    }
     std::replace_if(toRemove->begin(), toRemove->end(), [](const char &c) {
       return Dic.find(c) == std::string::npos;
     }, '_');

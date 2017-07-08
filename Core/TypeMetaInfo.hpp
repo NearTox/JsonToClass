@@ -9,6 +9,7 @@
 
 #include "Utils.hpp"
 #include <NearTox/Json.hpp>
+#include <NearTox/UniqueClass.hpp>
 #include <memory>
 
 namespace NearTox {
@@ -42,7 +43,6 @@ namespace NearTox {
 
   typedef size_t TypeID;
 
-  struct TypeMetaInfo;
   struct Json_Helper {
 
     std::string OriginalJsonName;
@@ -52,18 +52,19 @@ namespace NearTox {
     Visivility visible = Public_Visivility;
     bool UseSeter = false;
     bool UseGeter = false;
+    bool IsOptional = false;
 
-    bool setType(const BasicJSON &newType, TypeMetaInfo *info, Config_Helper *config);
-    std::string GetType(TypeMetaInfo *info, const Config_Helper *config, bool getSimple = false) const;
-    std::string ToString(TypeMetaInfo *info, const Config_Helper *config) const;
+    bool setType(const BasicJSON &newType, Config_Helper *config);
+    std::string GetType(const Config_Helper *config, bool getSimple = false) const;
+    std::string ToString(const Config_Helper *config) const;
   };
 
 
-  struct TypeMetaInfo {
+  struct TypeMetaInfo: public UniqueHandle {
 
     struct Type_Info;
     struct Parser_Helper {
-      virtual std::string makeParser(TypeMetaInfo &info, const Type_Info &typeinfo, const Json_Helper &child,
+      virtual std::string makeParser(const Type_Info &typeinfo, const Json_Helper &child,
         Config_Helper &config, const std::string &variableName = "childJson") = 0;
     };
 
@@ -73,26 +74,28 @@ namespace NearTox {
       std::shared_ptr<Parser_Helper> helper;
       std::string Alt;
 
+      Type_Info(std::string &&name, std::string &&nameSpace,
+        std::shared_ptr<Parser_Helper> &&helper = std::shared_ptr<Parser_Helper>(),
+        const std::string &&alt = std::string()
+      );
+
       std::string ToString() const;
     };
 
     struct bool_Helper : public Parser_Helper {
-      bool Parse(const BasicJSON &json, const TypeMetaInfo &info, const Json_Helper &child);
-      std::string makeParser(TypeMetaInfo &info, const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
+      std::string makeParser(const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
     };
 
     struct int_Helper : public Parser_Helper {
-      bool Parse(const BasicJSON &json, const TypeMetaInfo &info, const Json_Helper &child);
-      std::string makeParser(TypeMetaInfo &info, const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
+      std::string makeParser(const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
     };
 
     struct str_Helper : public Parser_Helper {
-      bool Parse(const BasicJSON &json, const TypeMetaInfo &info, const Json_Helper &child);
-      std::string makeParser(TypeMetaInfo &info, const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
+      std::string makeParser(const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
     };
 
     struct vector_Helper : public Parser_Helper {
-      std::string makeParser(TypeMetaInfo &info, const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
+      std::string makeParser(const Type_Info &typeinfo, const Json_Helper &child, Config_Helper &config, const std::string &variableName);
     };
 
     TypeID LastInternal;
@@ -100,10 +103,11 @@ namespace NearTox {
     std::vector<Type_Info> AllTypes;
 
     TypeMetaInfo();
-    ~TypeMetaInfo() {}
+    ~TypeMetaInfo();
 
     TypeID getTypeInfo(const std::string &find_type, bool autoAdd = false);
 
+    CLASS_NO_COPY(TypeMetaInfo);
   };
 
 }

@@ -1,0 +1,33 @@
+{
+  "Test": {
+    "--param": {
+      "yeah": true,
+      "array": [
+        "param"
+      ],
+      "array2": [
+        "Test"
+      ]
+    },
+    "param": "param",
+    "param_opt": "?param",
+    "args": 201,
+    "file": "File",
+    "file_opt": "?File",
+    "url": "Url",
+    "time": "Double",
+    "string": "String",
+    "wstring": "WString",
+    "myArray": [],
+    "myWArray": [
+      "WString"
+    ]
+  },
+  // can be nested
+  "--config": {
+    "name-format": "CamelCase",
+    // add someting at the start
+    "class-prefix": "m_",
+    "class-postfix": "_native"
+  }
+}
