@@ -1,5 +1,5 @@
 //
-// Copyright 2017: Ernesto Ramirez<NearTox@outlook.com>
+// Copyright 2017: Ernesto Ramirez(NearTox)
 // TODO: Put a Licence Here
 // Meanwhile... I wrote this code in hope that someone improve this code
 //
@@ -55,7 +55,7 @@ int main() {
   if(argc > 1) {
     return 0;
   }
-  //NearTox::worker(NearTox::makePath(L"T:\\NT.Sync\\JsonToClass\\result.json")); 
+  //NearTox::worker(NearTox::makePath(L"T:\\NT.Sync\\JsonToClass\\result.json"));
   std::cout << "JsonToClass.exe [] [--] [<pathspec>...]\n\n"
     "\t<pathspec>...\t\tArchivos a ser procesados\n\n";
   system("pause");

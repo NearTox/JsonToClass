@@ -1,5 +1,5 @@
 //
-// Copyright 2017: Ernesto Ramirez<NearTox@outlook.com>
+// Copyright 2017: Ernesto Ramirez(NearTox)
 // TODO: Put a Licence Here
 // Meanwhile... I wrote this code in hope that someone improve this code
 //
